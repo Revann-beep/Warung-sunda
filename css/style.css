@@ -524,3 +524,33 @@ a{ text-decoration:none; color:inherit; }
         padding:18px;
     }
 }
+@media (max-width:768px){
+
+    .hero-text{
+        flex-direction:row; /* tetap samping */
+        gap:20px;
+        align-items:center;
+    }
+
+    .hero-content{
+        max-width:60%; /* biar tidak terlalu lebar */
+    }
+
+    .hero-logo{
+        width:140px;
+        height:140px;
+    }
+
+    .hero-content h1{
+        font-size:26px;
+    }
+
+    .hero-content p{
+        font-size:13px;
+    }
+
+    .hero-content button{
+        padding:10px 16px;
+        font-size:14px;
+    }
+}
