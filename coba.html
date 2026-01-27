@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Warung Sunda</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONT & ICON -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+body{
+    background:#EFE1B5;
+    color:#fff;
+}
+a{ text-decoration:none; color:inherit; }
+
+/* HERO */
+.hero{
+    width:100%;
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 8%;
+    overflow:hidden;
+}
+.hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.6);
+}
+.hero-text{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    max-width:1400px;
+}
+.hero-content{
+    max-width:520px;
+}
+.hero-content h1{
+    font-size:48px;
+    color:#f5c16c;
+}
+.hero-content p{
+    margin:20px 0;
+    color:#ddd;
+}
+.hero-content button{
+    padding:12px 28px;
+    background:#f5c16c;
+    border:none;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+}
+.hero-logo{
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:#fff;
+    padding:8px;
+    object-fit:cover;
+}
+
+/* ABOUT */
+.about{
+    padding:80px 10%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+.about h2{
+    color:#6E5034;
+    margin-bottom:20px;
+}
+.about p{
+    color:#6E5034;
+    line-height:1.8;
+}
+
+/* PRODUCT */
+.products{
+    background:#f5f5f5;
+    color:#000;
+    padding:80px 10%;
+    text-align:center;
+}
+.products h2{
+    margin-bottom:40px;
+}
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+.card img{
+    width:100%;
+    height:350px;
+    object-fit:contain;   /* PENTING: tidak kepotong */
+    background:#f5f5f5;   /* biar tidak kosong */
+    border-radius:12px;
+}
+
+
+.card h3{
+    margin:15px 0 10px;
+}
+.card p{
+    color:#555;
+    font-size:14px;
+}
+
+.footer{
+    background:#4A3520;
+    color:#fff;
+    padding:40px 20px;
+}
+
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.footer-box h3{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.footer a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    margin-bottom:10px;
+    transition:0.3s;
+}
+
+.footer a:hover{
+    color:#ffd166;
+}
+
+.wa-link{
+    font-size:16px;
+}
+
+.social-links a{
+    font-size:15px;
+}
+
+.ig:hover{ color:#e1306c; }
+.tt:hover{ color:#000; }
+.yt:hover{ color:#ff0000; }
+
+.footer p{
+    text-align:center;
+    margin-top:30px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+
+/* KRITIK & SARAN
+.feedback{
+    padding:80px 10%;
+    background:#EFE1B5;
+}
+.feedback h2{
+    text-align:center;
+    color:#6E5034;
+    margin-bottom:40px;
+}
+.feedback-box{
+    max-width:600px;
+    margin:auto;
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.feedback-box label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+    color:#ccc;
+}
+.feedback-box input,
+.feedback-box textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:18px;
+    border:none;
+    border-radius:8px;
+    background:#2a2a2a;
+    color:#fff;
+    font-size:14px;
+}
+.feedback-box textarea{
+    resize:none;
+    height:120px;
+}
+.feedback-box button{
+    width:100%;
+    padding:14px;
+    background:#f5c16c;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+.feedback-box button:hover{
+    background:#e0ae55;
+} */
+
+.card .btn-pesan{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 18px;
+    background:#f5c16c;
+    color:#000;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    transition:.3s;
+}
+.card .btn-pesan:hover{
+    background:#e0ae55;
+}
+
+.catatan-pesan{
+    margin-top:30px;
+    padding:16px 20px;
+    background:#fff3d6;
+    color:#000;
+    border-left:6px solid #f5c16c;
+    border-radius:10px;
+    font-size:14px;
+}
+
+.card{
+    background:#fff;
+    padding:22px;
+    border-radius:24px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+
+.card img{
+    width:100%;
+    height:350px;
+    object-fit:contain;
+    background:#f5f5f5;
+    border-radius:18px;
+    padding:10px;
+}
+
+/* ANIMASI MENU */
+.products{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.8s ease;
+}
+
+.products.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ANIMASI SAAT SCROLL */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.social-row{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.social-row a{
+    font-size:24px;
+    color:#fff;
+    transition:0.3s;
+}
+
+.social-row a:hover{
+    transform:scale(1.2);
+}
+
+.ig:hover{ color:#e1306c; }
+.tt:hover{ color:#000; }
+.yt:hover{ color:#ff0000; }
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* JARAK antara teks & gambar */
+    padding: 60px;
+}
+
+/* BOX TEKS */
+.about-box {
+    max-width: 750px;
+    background-color: #f5e7c4; /* warna krem */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-box h2 {
+    margin-bottom: 15px;
+    color: #6b4f2c;
+}
+
+.about-box p {
+    line-height: 1.7;
+    color: #4a3a28;
+}
+
+/* BOX GAMBAR */
+.image-box img {
+    width: 420px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+/* ================= REVIEW ================= */
+.reviews{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.reviews h2{
+    color:#6E5034;
+    margin-bottom:40px;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:25px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.review-card{
+    background:#fff;
+    color:#4a3a28;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    text-align:left;
+}
+
+.review-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.review-header strong{
+    font-size:16px;
+}
+
+.stars{
+    color:#f5c16c;
+    font-size:16px;
+}
+
+.review-card p{
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* ================= MAP CARD ================= */
+.maps{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.maps h2{
+    color:#6E5034;
+    margin-bottom:30px;
+}
+
+.map-card{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden; /* BIAR MAP NGIKUT CARD */
+    box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* MAP ITSELF */
+.map-card iframe{
+    width:100%;
+    height:380px;
+    border:0;
+}
+
+/* DESKRIPSI */
+.map-desc{
+    padding:18px 22px;
+    background:#1F3D2B;
+    color:#fff;
+    font-size:14px;
+    text-align:left;
+}
+
+.card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:25px;     /* RADIUS LANGSUNG DI GAMBAR */
+    display:block;
+    transition:0.4s ease;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="pmndg.png" class="hero-bg" alt="Pemandangan Sunda">
+    <div class="hero-text">
+        <div class="hero-content">
+            <h1>Warung Sunda</h1>
+            <p>Menghadirkan cita rasa khas Sunda yang autentik dengan suasana hangat dan tradisional.</p>
+            <button id="btnMenu">Lihat Menu</button>
+
+        </div>
+        <img src="logopt.png" class="hero-logo" alt="Logo Warung Sunda">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<!-- <section class="about"> -->
+    <section class="about reveal">
+        <div class="image-box">
+        <img src="1.png" alt="Suasana Sunda">
+    </div>
+    <div class="about-box">
+        <h2>Deskripsi Usaha</h2>
+        <p>
+            Warung Sunda adalah usaha kuliner yang menyajikan makanan dan minuman khas dengan cita rasa sederhana namun menggugah selera. Produk utama yang ditawarkan adalah cireng kuah dengan tekstur renyah di luar dan kenyal di dalam, serta seblak dengan kuah pedas gurih yang kaya rempah. Untuk melengkapi hidangan, Warung Sunda juga menyediakan es buah segar yang cocok dinikmati di cuaca panas. Dengan harga terjangkau dan rasa yang khas, Warung Sunda menjadi pilihan tepat untuk menikmati jajanan favorit khas Sunda.
+        </p>
+    </div>
+
+    
+</section>
+
+<!-- PRODUCT -->
+<section class="products reveal" id="menu">
+
+    <h2>Menu Andalan</h2>
+    <div class="product-grid">
+
+        
+
+        <div class="card">
+    <img src="crg.png" alt="Cireng Kuah Seblak">
+    <h3>Cireng Kuah Seblak</h3>
+    <p>Cireng kenyal dengan kuah seblak pedas khas Sunda.</p>
+
+    <a href="https://wa.me/628568795015?text=Halo%20saya%20ingin%20pesan%20Cireng%20Kuah%20Seblak"
+       target="_blank"
+       class="btn-pesan">
+        Pesan Sekarang
+    </a>
+</div>
+
+
+        <div class="card">
+    <img src="buah.png" alt="Es Buah">
+    <h3>Es Buah</h3>
+    <p>Minuman segar dengan potongan buah pilihan.</p>
+
+    <a href="https://wa.me/628568795015?text=Halo%20saya%20ingin%20pesan%20Es%20Buah"
+       target="_blank"
+       class="btn-pesan">
+        Pesan Sekarang
+    </a>
+</div>
+
+    </div>
+    <div class="catatan-pesan">
+    <strong>Catatan Pemesanan:</strong><br>
+    Untuk menjaga kualitas makanan dan minuman, saat ini pemesanan
+    <b>hanya melayani wilayah sekitar lokasi produksi/daerah Jakarta Timur. </b><br>
+    Terima kasih atas pengertian Anda.
+</div>
+</section>
+
+<!-- KRITIK & SARAN -->
+<!-- REVIEW PELANGGAN -->
+<section class="reviews reveal">
+    <h2>Apa Kata Pelanggan</h2>
+
+    <div class="review-grid">
+
+        <div class="review-card">
+            <div class="review-header">
+                <strong>Asep</strong>
+                <span class="stars">★★★★★</span>
+            </div>
+            <p>
+                Cireng kuahnya enak banget, pedasnya pas dan bikin nagih. 
+                Harga terjangkau 👍
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-header">
+                <strong>Siti</strong>
+                <span class="stars">★★★★☆</span>
+            </div>
+            <p>
+                Es buahnya segar dan isinya banyak. Cocok diminum siang hari.
+            </p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-header">
+                <strong>Indra</strong>
+                <span class="stars">★★★★★</span>
+            </div>
+            <p>
+                Rasa seblaknya khas Sunda, kuahnya gurih dan tidak pelit topping.
+                Recomended!
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- LOKASI WARUNG -->
+<section class="maps reveal">
+    <h2>Lokasi Warung</h2>
+
+    <div class="map-card">
+
+        <!-- GOOGLE MAPS INTERAKTIF -->
+        <iframe
+            src="https://www.google.com/maps?q=Jakarta%20Timur&z=15&output=embed"
+            loading="lazy"
+            allowfullscreen>
+        </iframe>
+
+        <!-- INFO BAWAH MAP -->
+        <div class="map-desc">
+            <strong>Warung Sunda</strong><br>
+            📍 Jakarta Timur<br>
+            ⏰ 10.00 – 21.00 WIB
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Contact Person -->
+        <div class="footer-box">
+            <h3>Contact Person</h3>
+            <a href="https://wa.me/0812-3456-7890" target="_blank" class="wa-link">
+                <i class="fab fa-whatsapp"></i> 0812-3456-7890
+            </a>
+        </div>
+
+        <!-- Media Sosial -->
+        <div class="footer-box">
+    <h3>Media Sosial</h3>
+    <div class="social-row">
+        <a href="https://instagram.com/username" target="_blank" class="ig">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@username" target="_blank" class="tt">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://youtube.com/@username" target="_blank" class="yt">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+</div>
+
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Warung Sunda. All Rights Reserved.
+    </p>
+</footer>
+
+
+<script>
+document.getElementById("btnMenu").addEventListener("click", function () {
+    const menuSection = document.getElementById("menu");
+
+    menuSection.scrollIntoView({
+        behavior: "smooth"
+    });
+
+    setTimeout(() => {
+        menuSection.classList.add("show");
+    }, 400);
+});
+
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        } else {
+            entry.target.classList.remove("active");
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+reveals.forEach(section => {
+    observer.observe(section);
+});
+</script>
+
+
+
+
+</body>
+</html>
