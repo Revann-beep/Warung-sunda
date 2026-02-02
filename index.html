@@ -1,230 +1,312 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Warung Sunda</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- FONT & ICON -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-
-
+    <meta charset="UTF-8">
+    <title>Warung Sunda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FONT & ICON -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sunda-gold': '#f5c16c',
+                        'sunda-brown': '#6E5034',
+                        'sunda-cream': '#EFE1B5',
+                        'sunda-dark': '#4A3520',
+                        'sunda-light': '#f5e7c4',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #EFE1B5;
+        }
+        
+        /* HERO BACKGROUND */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 8%;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,.6);
+        }
+        
+        /* Animasi scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Product animation */
+        .products-section {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s ease;
+        }
+        
+        .products-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Card hover effect */
+        .card-hover:hover {
+            transform: translateY(-8px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+    </style>
 </head>
 
-<body>
+<body class="font-poppins text-white">
 
 <!-- HERO -->
 <section class="hero">
     <img src="assets/pmndg.png" class="hero-bg" alt="Pemandangan Sunda">
-    <div class="hero-text">
-        <div class="hero-content">
-            <h1>Warung Sunda</h1>
-            <p>Menghadirkan cita rasa khas Sunda yang autentik dengan suasana hangat dan tradisional.</p>
-            <button id="btnMenu">Lihat Menu</button>
-
+    
+    <div class="relative z-10 flex flex-col lg:flex-row justify-between items-center w-full max-w-[1400px]">
+        <div class="max-w-[520px] text-center lg:text-left mb-10 lg:mb-0">
+            <h1 class="text-[36px] md:text-[48px] font-bold text-sunda-gold mb-4">Warung Sunda</h1>
+            <p class="text-lg text-gray-200 mb-8">Menghadirkan cita rasa khas Sunda yang autentik dengan suasana hangat dan tradisional.</p>
+            <button id="btnMenu" class="px-8 py-3 bg-sunda-gold text-gray-900 font-semibold rounded-lg hover:bg-amber-500 transition-colors">
+                Lihat Menu
+            </button>
         </div>
-        <img src="assets/logopt.png" class="hero-logo" alt="Logo Warung Sunda">
+        <img src="assets/logopt.png" class="w-[200px] h-[200px] md:w-[320px] md:h-[320px] rounded-full bg-white p-2 object-cover" alt="Logo Warung Sunda">
     </div>
 </section>
 
 <!-- ABOUT -->
-<!-- <section class="about"> -->
-    <section class="about reveal">
-        <div class="image-box">
-        <img src="assets/1.png" alt="Suasana Sunda">
+<section class="reveal flex flex-col lg:flex-row items-center justify-between gap-8 px-5 lg:px-16 py-12 lg:py-16">
+    <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+        <img src="assets/1.png" alt="Suasana Sunda" class="w-full max-w-[420px] lg:max-w-none rounded-2xl object-cover mx-auto">
     </div>
-    <div class="about-box">
-        <h2>Deskripsi Usaha</h2>
-        <p>
+    
+    <div class="w-full lg:w-1/2 bg-sunda-light p-6 lg:p-8 rounded-xl shadow-lg">
+        <h2 class="text-2xl lg:text-3xl font-bold text-sunda-brown mb-4">Deskripsi Usaha</h2>
+        <p class="text-gray-800 leading-relaxed">
             Warung Sunda adalah usaha kuliner yang menyajikan makanan dan minuman khas dengan cita rasa sederhana namun menggugah selera. Produk utama yang ditawarkan adalah cireng kuah dengan tekstur renyah di luar dan kenyal di dalam, serta seblak dengan kuah pedas gurih yang kaya rempah. Untuk melengkapi hidangan, Warung Sunda juga menyediakan es buah segar yang cocok dinikmati di cuaca panas. Dengan harga terjangkau dan rasa yang khas, Warung Sunda menjadi pilihan tepat untuk menikmati jajanan favorit khas Sunda.
         </p>
     </div>
-
-    
 </section>
 
 <!-- PRODUCT -->
-<section class="products reveal" id="menu">
-
-    <h2>Menu Andalan</h2>
-    <div class="product-grid">
-
+<section class="products-section" id="menu">
+    <div class="bg-gray-100 text-gray-900 py-12 lg:py-20 px-5 lg:px-[10%]">
+        <h2 class="text-3xl lg:text-4xl font-bold text-sunda-brown mb-10 lg:mb-12 text-center">Menu Andalan</h2>
         
-
-        <div class="card">
-            <img src="assets/crg.png" alt="Cireng Kuah Seblak">
-            <h3>Cireng Kuah Seblak</h3>
-            <p>Cireng kenyal dengan kuah seblak pedas khas Sunda.</p>
-            <span class="harga">Rp12.000</span>
-        
-            <a href="https://wa.me/628568795015?text=Halo%20saya%20ingin%20pesan%20Cireng%20Kuah%20Seblak"
-               target="_blank"
-               class="btn-pesan">
-                Pesan Sekarang
-            </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+            <!-- Cireng Kuah Seblak -->
+            <div class="bg-white p-6 rounded-3xl shadow-lg card-hover">
+                <img src="assets/crg.png" alt="Cireng Kuah Seblak" class="w-full h-[250px] lg:h-[350px] object-contain bg-gray-100 rounded-2xl p-4">
+                <h3 class="text-xl font-bold mt-4 mb-2">Cireng Kuah Seblak</h3>
+                <p class="text-gray-600 mb-3">Cireng kenyal dengan kuah seblak pedas khas Sunda.</p>
+                <span class="block font-bold text-red-600 text-lg mb-4">Rp12.000</span>
+                
+                <a href="https://wa.me/628568795015?text=Halo%20saya%20ingin%20pesan%20Cireng%20Kuah%20Seblak"
+                   target="_blank"
+                   class="inline-block px-6 py-3 bg-sunda-gold text-gray-900 font-semibold rounded-lg hover:bg-amber-500 transition-colors w-full text-center">
+                    Pesan Sekarang
+                </a>
+            </div>
+            
+            <!-- Es Buah -->
+            <div class="bg-white p-6 rounded-3xl shadow-lg card-hover">
+                <img src="assets/buah.png" alt="Es Buah" class="w-full h-[250px] lg:h-[350px] object-contain bg-gray-100 rounded-2xl p-4">
+                <h3 class="text-xl font-bold mt-4 mb-2">Es Buah</h3>
+                <p class="text-gray-600 mb-3">Minuman segar dengan potongan buah pilihan.</p>
+                <span class="block font-bold text-red-600 text-lg mb-4">Rp9.000</span>
+                
+                <a href="https://wa.me/628568795015?text=Halo%20saya%20ingin%20pesan%20Es%20Buah"
+                   target="_blank"
+                   class="inline-block px-6 py-3 bg-sunda-gold text-gray-900 font-semibold rounded-lg hover:bg-amber-500 transition-colors w-full text-center">
+                    Pesan Sekarang
+                </a>
+            </div>
         </div>
         
-
-
-        <div class="card">
-            <img src="assets/buah.png" alt="Es Buah">
-            <h3>Es Buah</h3>
-            <p>Minuman segar dengan potongan buah pilihan.</p>
-            <span class="harga">Rp9.000</span>
-        
-            <a href="https://wa.me/628568795015?text=Halo%20saya%20ingin%20pesan%20Es%20Buah"
-               target="_blank"
-               class="btn-pesan">
-                Pesan Sekarang
-            </a>
+        <div class="mt-8 lg:mt-12 p-5 bg-amber-50 text-gray-900 border-l-4 border-sunda-gold rounded-lg max-w-4xl mx-auto">
+            <strong class="text-sunda-brown">Catatan Pemesanan:</strong><br>
+            Untuk menjaga kualitas makanan dan minuman, saat ini pemesanan
+            <b>hanya melayani wilayah sekitar lokasi produksi/daerah Jakarta Timur. </b><br>
+            Terima kasih atas pengertian Anda.
         </div>
-        
-
     </div>
-    <div class="catatan-pesan">
-    <strong>Catatan Pemesanan:</strong><br>
-    Untuk menjaga kualitas makanan dan minuman, saat ini pemesanan
-    <b>hanya melayani wilayah sekitar lokasi produksi/daerah Jakarta Timur. </b><br>
-    Terima kasih atas pengertian Anda.
-</div>
 </section>
 
 <!-- KENAPA MEMILIH WARUNG SUNDA -->
-<section class="why-us reveal">
-    <h2>Kenapa Memilih Warung Sunda?</h2>
-
-    <div class="why-grid">
-
-        <div class="why-card">
-            <i class="fas fa-utensils"></i>
-            <h4>Resep Khas Sunda</h4>
-            <p>Cita rasa autentik dengan bumbu khas yang menggugah selera.</p>
+<section class="reveal bg-sunda-cream py-12 lg:py-20 px-5 lg:px-[10%]">
+    <h2 class="text-3xl lg:text-4xl font-bold text-sunda-brown mb-10 lg:mb-12 text-center">Kenapa Memilih Warung Sunda?</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+        <div class="bg-sunda-light p-6 rounded-2xl shadow-lg card-hover">
+            <i class="fas fa-utensils text-3xl text-sunda-gold mb-4 block text-center"></i>
+            <h4 class="font-bold text-sunda-brown mb-2 text-center">Resep Khas Sunda</h4>
+            <p class="text-gray-700 text-sm text-center">Cita rasa autentik dengan bumbu khas yang menggugah selera.</p>
         </div>
-
-        <div class="why-card">
-            <i class="fas fa-fire"></i>
-            <h4>Dimasak Fresh</h4>
-            <p>Setiap pesanan dimasak langsung agar rasa tetap terjaga.</p>
+        
+        <div class="bg-sunda-light p-6 rounded-2xl shadow-lg card-hover">
+            <i class="fas fa-fire text-3xl text-sunda-gold mb-4 block text-center"></i>
+            <h4 class="font-bold text-sunda-brown mb-2 text-center">Dimasak Fresh</h4>
+            <p class="text-gray-700 text-sm text-center">Setiap pesanan dimasak langsung agar rasa tetap terjaga.</p>
         </div>
-
-        <div class="why-card">
-            <i class="fas fa-wallet"></i>
-            <h4>Harga Terjangkau</h4>
-            <p>Nikmat tanpa harus mahal, cocok untuk semua kalangan.</p>
+        
+        <div class="bg-sunda-light p-6 rounded-2xl shadow-lg card-hover">
+            <i class="fas fa-wallet text-3xl text-sunda-gold mb-4 block text-center"></i>
+            <h4 class="font-bold text-sunda-brown mb-2 text-center">Harga Terjangkau</h4>
+            <p class="text-gray-700 text-sm text-center">Nikmat tanpa harus mahal, cocok untuk semua kalangan.</p>
         </div>
-
-        <div class="why-card">
-            <i class="fab fa-whatsapp"></i>
-            <h4>Pesan Mudah</h4>
-            <p>Pemesanan cepat dan praktis langsung lewat WhatsApp.</p>
+        
+        <div class="bg-sunda-light p-6 rounded-2xl shadow-lg card-hover">
+            <i class="fab fa-whatsapp text-3xl text-sunda-gold mb-4 block text-center"></i>
+            <h4 class="font-bold text-sunda-brown mb-2 text-center">Pesan Mudah</h4>
+            <p class="text-gray-700 text-sm text-center">Pemesanan cepat dan praktis langsung lewat WhatsApp.</p>
         </div>
-
-        <div class="why-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <h4>Area Terdekat</h4>
-            <p>Melayani pemesanan khusus wilayah Jakarta Timur.</p>
+        
+        <div class="bg-sunda-light p-6 rounded-2xl shadow-lg card-hover">
+            <i class="fas fa-map-marker-alt text-3xl text-sunda-gold mb-4 block text-center"></i>
+            <h4 class="font-bold text-sunda-brown mb-2 text-center">Area Terdekat</h4>
+            <p class="text-gray-700 text-sm text-center">Melayani pemesanan khusus wilayah Jakarta Timur.</p>
         </div>
-
     </div>
 </section>
 
-
 <!-- LOKASI WARUNG -->
-<section class="maps reveal">
-    <h2>Lokasi Warung</h2>
-
-    <div class="map-card">
-
-        <!-- GOOGLE MAPS INTERAKTIF -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d247.89616518874354!2d106.93254489153483!3d-6.218996952512294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1769489873116!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-        <!-- INFO BAWAH MAP -->
-        <div class="map-desc">
-            <strong>Warung Sunda</strong><br>
+<section class="reveal py-12 lg:py-20 px-5 lg:px-[10%]">
+    <h2 class="text-3xl lg:text-4xl font-bold text-sunda-brown mb-8 lg:mb-12 text-center">Lokasi Warung</h2>
+    
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d247.89616518874354!2d106.93254489153483!3d-6.218996952512294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1769489873116!5m2!1sen!2sid" 
+                class="w-full h-[300px] lg:h-[380px] border-0" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        <div class="p-5 bg-sunda-dark text-white">
+            <strong class="text-lg">Warung Sunda</strong><br>
             📍Gg. 5 No.89, RT.3/RW.13, Malaka Jaya, Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13460<br>
             ⏰ 10.00 – 21.00 WIB
         </div>
-
     </div>
 </section>
 
-
-
-
 <!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-container">
-
-        <!-- Contact Person -->
-        <div class="footer-box">
-            <h3>Contact Person</h3>
-            <a href="https://wa.me/08978517350" target="_blank" class="wa-link">
+<footer class="bg-sunda-dark text-white py-12 px-5">
+    <div class="max-w-4xl mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8">
+        
+        <div class="text-center lg:text-left">
+            <h3 class="text-xl font-bold mb-4">Contact Person</h3>
+            <a href="https://wa.me/08978517350" target="_blank" class="flex items-center justify-center lg:justify-start gap-2 text-lg hover:text-sunda-gold transition-colors">
                 <i class="fab fa-whatsapp"></i> 08978517350
             </a>
         </div>
-
-        <!-- Media Sosial -->
-        <div class="footer-box">
-    <h3>Media Sosial</h3>
-    <div class="social-row">
-        <a href="https://www.instagram.com/warung_sunda67?igsh=MjFxNXpzdDVrc3c4" target="_blank" class="ig">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.tiktok.com/@warung_sunda2226?_r=1&_t=ZS-93RJ3z188lW" target="_blank" class="tt">
-            <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://youtube.com/@nadiarahayu-n3k?si=x94p9bRcSPvsvbOI" target="_blank" class="yt">
-            <i class="fab fa-youtube"></i>
-        </a>
+        
+        <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">Media Sosial</h3>
+            <div class="flex gap-6 justify-center">
+                <a href="https://www.instagram.com/warung_sunda67?igsh=MjFxNXpzdDVrc3c4" target="_blank" class="text-2xl hover:text-pink-500 transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@warung_sunda2226?_r=1&_t=ZS-93RJ3z188lW" target="_blank" class="text-2xl hover:text-black transition-colors">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://youtube.com/@nadiarahayu-n3k?si=x94p9bRcSPvsvbOI" target="_blank" class="text-2xl hover:text-red-600 transition-colors">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        
     </div>
-</div>
-
-
-    </div>
-
-    <p class="copyright">
+    
+    <p class="text-center mt-10 text-gray-300 text-sm">
         © 2026 Warung Sunda. All Rights Reserved.
     </p>
 </footer>
 
-
 <script>
-document.getElementById("btnMenu").addEventListener("click", function () {
-    const menuSection = document.getElementById("menu");
-
-    menuSection.scrollIntoView({
-        behavior: "smooth"
+    // Tombol lihat menu
+    document.getElementById("btnMenu").addEventListener("click", function () {
+        const menuSection = document.getElementById("menu");
+        
+        // Scroll ke section produk
+        menuSection.scrollIntoView({
+            behavior: "smooth"
+        });
+        
+        // Tambah class show untuk animasi
+        setTimeout(() => {
+            menuSection.classList.add("show");
+        }, 400);
     });
-
-    setTimeout(() => {
-        menuSection.classList.add("show");
-    }, 400);
-});
-
-
-const reveals = document.querySelectorAll(".reveal");
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-        } else {
-            entry.target.classList.remove("active");
-        }
+    
+    // Animasi scroll reveal
+    const reveals = document.querySelectorAll(".reveal");
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, {
+        threshold: 0.1
     });
-}, {
-    threshold: 0.2
-});
-
-reveals.forEach(section => {
-    observer.observe(section);
-});
+    
+    reveals.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Inisialisasi produk section agar terlihat
+    window.addEventListener('load', function() {
+        const productsSection = document.querySelector('.products-section');
+        productsSection.style.opacity = "1";
+        productsSection.style.transform = "translateY(0)";
+    });
 </script>
-
-
-
 
 </body>
 </html>
